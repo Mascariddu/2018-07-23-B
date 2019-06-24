@@ -6,7 +6,6 @@ public class TestDAO {
 
 		NewUfoSightingsDAO dao = new NewUfoSightingsDAO();
 
-		System.out.println(dao.loadAllStates());
 	}
 
 }

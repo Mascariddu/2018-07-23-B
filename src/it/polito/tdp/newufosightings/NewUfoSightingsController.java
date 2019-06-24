@@ -48,12 +48,55 @@ public class NewUfoSightingsController {
 
 	@FXML
 	void doCreaGrafo(ActionEvent event) {
+		
+		txtResult.clear();
 
+		try {
+			
+			int anno = Integer.parseInt(txtAnno.getText());
+			int gg = Integer.parseInt(txtxG.getText());
+			
+			if(gg > 0 && gg < 181) {
+				
+				if(anno > 1905 && anno < 2015) {
+					
+					model.creaGrafo(anno,gg);
+					for(String string : model.getPesi())
+						txtResult.appendText(string+"\n");
+					
+				} else txtResult.appendText("L' anno deve essere compreso tra 1906 e 2014!");
+				
+			} else txtResult.appendText("I giorni devono essere compresi tra 1 e 180!");
+			
+		} catch (NumberFormatException e) {
+			// TODO: handle exception
+			txtResult.appendText("Inserisci valori numerici!");
+		}
 	}
 
 	@FXML
 	void doSimula(ActionEvent event) {
+		
+		txtResult.clear();
 
+		try {
+			
+			int anno = Integer.parseInt(txtAnno.getText());
+			int t1 = Integer.parseInt(txtT1.getText());
+			int t2 = Integer.parseInt(txtT2.getText());
+			
+			if(t1 > 0 && t1 < 366 && t2 > 0 && t2 < 366) {
+				
+				model.simula(anno,t1,t2);
+				for(String string : model.getAllerte())
+					txtResult.appendText(string+"\n");
+				
+			}else txtResult.appendText("Troppi pochi o troppi giorni!");
+			
+		} catch (NumberFormatException e) {
+			// TODO: handle exception
+			txtResult.appendText("Inserisci i giorni!");
+		}
 	}
 
 	@FXML // This method is called by the FXMLLoader when initialization is complete

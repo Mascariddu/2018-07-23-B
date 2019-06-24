@@ -9,6 +9,9 @@ public class State {
 	private int area;
 	private int population;
 	private String neighbors;
+	private boolean allerta;
+	private int defcon;
+	private int peso;
 
 	public State(String id, String name, String capital, Double lat, Double lng, int area, int population,
 			String neighbors) {
@@ -115,6 +118,31 @@ public class State {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public boolean isAllerta() {
+		return allerta;
+	}
+
+	public void setAllerta(boolean allerta) {
+		this.allerta = allerta;
+	}
+
+	public int getDefcon() {
+		return defcon;
+	}
+
+	public void setDefcon(int defcon) {
+		this.defcon = defcon;
+	}
+
+	public void setPeso(int tot) {
+		// TODO Auto-generated method stub
+		this.peso = tot;
+	}
+
+	public int getPeso() {
+		return peso;
 	}
 
 }
